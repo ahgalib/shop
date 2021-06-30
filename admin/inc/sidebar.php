@@ -23,6 +23,12 @@
                         <li><a href="sliderlist.php">Slider List</a> </li>
                     </ul>
                 </li>
+                <li><a class="menuitem">Brand Option</a>
+                    <ul class="submenu">
+                        <li><a href="addbrand.php">Add Brand</a> </li>
+                        <li><a href="brandlist.php">Brand List</a> </li>
+                    </ul>
+                </li>
                 <li><a class="menuitem">Category Option</a>
                     <ul class="submenu">
                         <li><a href="addcat.php">Add Category</a> </li>
