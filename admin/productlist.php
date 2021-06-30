@@ -46,11 +46,21 @@
 								echo "General";
 							}
 						?>
-						
 					</td>
-					<td><a href="editpro.php?pro_id=<?php echo $row['pro_id']; ?>">Edit</a> || <a href="delpro.php?pro_id=<?php echo $row['pro_id']; ?>">Delete</a></td>
+					<td><a href="editpro.php?pro_id=<?php echo $row['pro_id']; ?>">Edit</a> || <a href="?pro_del=<?php echo $row['pro_id']; ?>">Delete</a></td>
 				</tr>
 			<?php }} ?>
+			<?php 
+			if(isset($_GET['pro_del'])){
+				$id_del =$_GET['pro_del'];
+				$del_obj = $obj_pro->delPro($id_del);
+				if($id_del){
+					echo "<script>window.location='productlist.php'</script>";
+				}
+
+			}
+			 ?>
+			
 			</tbody>
 		</table>
 

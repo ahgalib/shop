@@ -1,3 +1,15 @@
+<?php 
+	include "lib/session.php";
+	Session::init();
+	include "lib/database.php";
+	spl_autoload_register(function($class){
+		include_once "classes/".$class."class.php";
+	});
+	$db = new database();
+	$obj_pro = new product();
+	$obj_category = new category();
+ ?>
+
 <!DOCTYPE HTML>
 <head>
 <title>Store Website</title>

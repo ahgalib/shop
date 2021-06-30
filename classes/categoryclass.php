@@ -1,5 +1,6 @@
 <?php 
-include_once "../lib/database.php";
+$file_path = realpath(dirname(__FILE__));
+include_once $file_path."/../lib/database.php";
  ?>
  <?php 
 class Category{
@@ -59,6 +60,14 @@ public $db;
 	public function deletQ($del_id){
 		$sql = "DELETE FROM admin_category WHERE id='$del_id'";
 		$sel_row = $this->db->delete($sql);
+		if($sel_row){
+			return $sel_row;
+		}
+	}
+
+	public function selCat(){
+	$sql = "SELECT * FROM admin_category";
+	$sel_row = $this->db->select($sql);
 		if($sel_row){
 			return $sel_row;
 		}

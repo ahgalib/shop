@@ -1,7 +1,13 @@
-<?php include "../lib/database.php"; ?>
-<?php include "../lib/session.php"; 
+<?php 
+$file_path = realpath(dirname(__FILE__));
+include_once $file_path."/../lib/session.php";
 session::checklog();
 ?>
+<?php 
+$file_path = realpath(dirname(__FILE__));
+include_once $file_path."/../lib/database.php";
+ ?>
+
 <?php 
 class login{
 	public $db = "";

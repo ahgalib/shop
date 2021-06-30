@@ -1,4 +1,7 @@
-<?php include_once "../lib/database.php"; ?>
+<?php 
+$file_path = realpath(dirname(__FILE__));
+include_once $file_path."/../lib/database.php";
+ ?>
 <?php 
 class brand{
 	public $obj_db;
