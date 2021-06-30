@@ -33,5 +33,37 @@ public $db;
 		}
 	}
 
+	public function updataCat($id,$cat){
+		$category = mysqli_real_escape_string($this->db->link,$cat);
+		if($category == ""){
+			$cat_msg = "<span style='color:red;font-size: 20px;'>write a category name</span>";
+			return $cat_msg;
+		}else{
+			$sql = "UPDATE admin_category SET category_name = '$cat' WHERE id='$id'";
+			$update_row = $this->db->update($sql);
+			if($update_row){
+				$msg_cate = "<span style='color:green;font-size: 20px;'>update category successfull</span>";
+				echo "<script>window.location='catlist.php'</script>";
+			}
+		}
+	}
+
+	public function  selectWhere($id){
+		$sql = "SELECT * FROM admin_category WHERE id='$id'";
+		$sel_row = $this->db->select($sql);
+		if($sel_row){
+			return $sel_row;
+		}
+	}
+
+	public function deletQ($del_id){
+		$sql = "DELETE FROM admin_category WHERE id='$del_id'";
+		$sel_row = $this->db->delete($sql);
+		if($sel_row){
+			return $sel_row;
+		}
+	}
+
+
 }
   ?>

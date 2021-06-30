@@ -32,5 +32,36 @@ class brand{
 			}
 		}
 	}
+
+	public function updataBrand($id,$brand){
+		$brand_name = mysqli_real_escape_string($this->obj_db->link,$brand);
+		if($brand_name == ""){
+			$brd_msg = "<span style='color:red;font-size: 20px;'>write a brand name</span>";
+			return $brd_msg;
+		}else{
+			$sql = "UPDATE admin_brand SET brand_name = '$brand_name' WHERE brand_id='$id'";
+			$update_row = $this->obj_db->update($sql);
+			if($update_row){
+				$msg_brd = "<span style='color:green;font-size: 20px;'>update category successfull</span>";
+				echo "<script>window.location='brandlist.php'</script>";
+			}
+		}
+	}
+
+	public function  selectWhere($id){
+	$sql = "SELECT * FROM admin_brand WHERE brand_id='$id'";
+	$sel_row = $this->obj_db->select($sql);
+		if($sel_row){
+			return $sel_row;
+		}
+	}
+
+	public function deletQ($del_id){
+	$sql = "DELETE FROM admin_brand WHERE brand_id='$del_id'";
+	$sel_row = $this->obj_db->delete($sql);
+		if($sel_row){
+			return $sel_row;
+		}
+	}
 }
  ?>
