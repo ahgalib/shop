@@ -1,3 +1,8 @@
+<?php 
+include ("../lib/session.php");
+Session::checksession();
+ ?>
+
 <?php
   header("Cache-Control: no-cache, must-revalidate");
   header("Pragma: no-cache"); 
@@ -37,6 +42,13 @@
 
 </head>
 <body>
+    <?php 
+    //logout option
+    if(isset($_GET['forlog'])){
+        Session::destroy();
+    }
+     ?>
+    
     <div class="container_12">
         <div class="grid_12 header-repeat">
             <div id="branding">
@@ -52,8 +64,8 @@
                         <img src="img/img-profile.jpg" alt="Profile Pic" /></div>
                     <div class="floatleft marginleft10">
                         <ul class="inline-ul floatleft">
-                            <li>Hello Admin</li>
-                            <li><a href="#">Logout</a></li>
+                            <li>Hello <?php echo Session::get("usName"); ?></li>
+                            <li><a href="?forlog=loginaccess">Logout</a></li>
                         </ul>
                     </div>
                 </div>
