@@ -1,4 +1,4 @@
-<?php include "../lib/database.php"; ?>
+<?php include_once "../lib/database.php"; ?>
 <?php 
 class brand{
 	public $obj_db;

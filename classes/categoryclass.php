@@ -1,5 +1,5 @@
 <?php 
-include "../lib/database.php";
+include_once "../lib/database.php";
  ?>
  <?php 
 class Category{
