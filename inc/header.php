@@ -9,6 +9,7 @@
 	$obj_pro = new product();
 	$obj_category = new category();
 	$obj_cart = new cart();
+	$obj_customer = new customer();
  ?>
 
 <!DOCTYPE HTML>
@@ -63,7 +64,16 @@
 						</a>
 						</div>
 			      </div>
-		   <div class="login"><a href="login.php">Login</a></div>
+		   <div class="login">
+		   		<?php 
+				   	$login = session::get("cuslog");
+				   	if($login == false){
+				   	 ?>
+				   	 <a href="login.php">Login</a>
+				   	<?php }else{ ?>
+				   	<a href="?cuid=<?php session::get("cusId");?>">logOut</a>
+			   <?php } ?>
+		   </div>
 		 <div class="clear"></div>
 	 </div>
 	 <div class="clear"></div>
