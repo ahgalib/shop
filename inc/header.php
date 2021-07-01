@@ -8,6 +8,7 @@
 	$db = new database();
 	$obj_pro = new product();
 	$obj_category = new category();
+	$obj_cart = new cart();
  ?>
 
 <!DOCTYPE HTML>
@@ -47,9 +48,19 @@
 			    <div class="shopping_cart">
 					<div class="cart">
 						<a href="#" title="View my shopping cart" rel="nofollow">
-								<span class="cart_title">Cart</span>
-								<span class="no_product">(empty)</span>
-							</a>
+							<span class="cart_title">Cart</span>
+							<span class="no_product">
+							<?php 
+								$cartSEm = $obj_cart->cce();
+								if($cartSEm){
+									$sum = session::get("sum");
+									echo $sum." TK";
+								}else{
+									echo "empty";
+								}
+								 ?>
+							</span>
+						</a>
 						</div>
 			      </div>
 		   <div class="login"><a href="login.php">Login</a></div>
@@ -62,7 +73,12 @@
 	  <li><a href="index.php">Home</a></li>
 	  <li><a href="products.php">Products</a> </li>
 	  <li><a href="topbrands.php">Top Brands</a></li>
+	  <?php 
+	  	$showC = $obj_cart->cce();
+	  	if($showC){
+	   ?>
 	  <li><a href="cart.php">Cart</a></li>
+	<?php } ?>
 	  <li><a href="contact.php">Contact</a> </li>
 	  <div class="clear"></div>
 	</ul>
