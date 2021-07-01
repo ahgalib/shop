@@ -73,5 +73,57 @@ class cart{
 		$query = $this->db->select($sql);
 		return $query;
 	}
+
+	public function orderlist($sesid){
+		$sesId = session_id();
+		$sql = "SELECT * FROM admin_cart WHERE sess_id = '$sesId'";
+		$query = $this->db->select($sql);
+		if($query){
+			while($row = $query->fetch_assoc()){
+				$proID = $row['pro_id'];
+				$proNm = $row['pro_name'];
+				
+				$proQuna = $row['quantity'];
+				$proPrice = $row['pro_price'];
+				$pro_img = $row['image'];
+
+				$ord_ins = "INSERT INTO shop_order(cus_id,pro_id,pro_name,quantity,price,image)VALUES('$sesid','$proID','$proNm','$proQuna','$proPrice','$pro_img')";
+				$ins = $this->db->insert($ord_ins);
+			
+			}
+		}
+	}
+
+	public function showOrder($seId){
+		$sql = "SELECT * FROM shop_order WHERE cus_id = '$seId'";
+		$query = $this->db->select($sql);
+		if($query){
+			return $query;
+		}else{
+			echo "fail";
+		}
+	}
+
+	public function showOrderadmin(){
+		$sql = "SELECT * FROM shop_order";
+		$query = $this->db->select($sql);
+		if($query){
+			return $query;
+		}else{
+			echo "fail";
+		}
+	}
+
+	public function upsta($cid,$oderid){
+		$sql = "UPDATE shop_order SET status = '1' WHERE cus_id = '$cid' AND or_id ='$oderid'";
+		$show = $this->db->update($sql);
+		if($show){
+			$msg = "<span style='color:green'>Update successfull</span>";
+			return $msg;
+		}else{
+			$msg = "<span style='color:red'>Update NOTT successfull</span>";
+			return $msg;
+		}
+	}
 }
   ?>

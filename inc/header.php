@@ -35,6 +35,13 @@
 </script>
 </head>
 <body>
+	<!--log out -->
+	<?php 
+	if(isset($_GET['cuid'])){
+		$delProForLogout = $obj_customer->deleteCart();
+		session::destroy();
+	}
+	 ?>
   <div class="wrap">
 		<div class="header_top">
 			<div class="logo">

@@ -51,7 +51,6 @@ if(isset($_GET['delid'])){
 							}
 						}
 						 ?>
-						
 						<td>
 							<form action="" method="post">
 								<input type="hidden" name="cartId" value="<?php echo $row['cart_id']; ?>"/>
